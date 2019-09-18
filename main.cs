@@ -1,27 +1,37 @@
 //Jacob Abel
-//Temperature Conversion (From Fahrenheit to Celcius and Kelvin)
-//Last edited 9/10/19
+//This program takes in hourly wages, worked hours in a week, and overtime, and outputs the yearly salary after taxes.
+//Last edited 9/17/19
 using System;
 
 class MainClass {
-
   public static void Main (string[] args) 
   {
+    double wage, hours, overtime, yearwage, withover, taxes, final;
+    string wageString, hoursString, nameString, overtimeString;
 
-//This line is my declared variables and strings that the program will be told to recognize
-    double fahrenheit, kelvin, celcius;
-    string fahrenheitString;
+    Console.WriteLine("Insert your name.");
+      nameString = Console.ReadLine();
+      
+    Console.WriteLine("Insert your current wages.");
+      wageString = Console.ReadLine();
+      wage = double.Parse(wageString);
 
-//I created a prompt to inform the user what to do and made a command to have the program take in a value entered in by the user
-    Console.WriteLine("Insert a temperature in Fahrenheit.");
-    fahrenheitString = Console.ReadLine();
-    fahrenheit = double.Parse(fahrenheitString);
+    Console.WriteLine("How many hours do you work a week?");
+     hoursString = Console.ReadLine();
+     hours = double.Parse(hoursString);
 
-//These are the two conversion equations used which will convert the Fahrenheit number inserted into their specific units.
-    celcius = (fahrenheit - 32) * 5/9 ;
-    kelvin = celcius + 273.15;
-    
-//This last line informs the user what the numbers spat out means.
-    Console.WriteLine("The temperature in Celcius is " + celcius);Console.WriteLine("The temperature in Kelvin is " + kelvin);
+    Console.WriteLine("Insert overtime you've worked this year.");
+     overtimeString = Console.ReadLine();
+     overtime = double.Parse(overtimeString);
+
+       yearwage = (wage * hours) * 4 * 12;
+      
+       withover = (overtime * wage) * 1.5;
+
+        taxes = (yearwage + withover) * .12;
+
+       final = (yearwage + withover) - taxes;
+
+       Console.WriteLine(nameString + ", your salary after taxes is " + final);
   }
-} 
+}
